@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8768dce0-ee84-4f38-8eb2-7d1a6b731afe" name="Changes" comment="1">
       <change beforePath="$PROJECT_DIR$/.idea/caphore.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caphore.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -443,7 +441,7 @@
       <option name="project" value="LOCAL" />
       <updated>1702713404156</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
