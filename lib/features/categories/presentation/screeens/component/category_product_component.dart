@@ -34,6 +34,8 @@ class _CategoryProductComponentState extends State<CategoryProductComponent> {
     return BlocProvider(
       create: (context) => bloc..add(widget.event),
       child: BlocBuilder<CategoriesBloc, CategoriesState>(
+        buildWhen: (previous, current) =>
+            (previous.loadMore != current.loadMore),
         builder: (context, state) {
           switch (state.categoryProductsState) {
             case RequestState.loading:
@@ -119,7 +121,7 @@ class _CategoryProductComponentState extends State<CategoryProductComponent> {
               return SizedBox(
                 height: 280.h,
                 child: Center(
-                  child: Text(state.menClothingProductsMessage),
+                  child: Text(state.categoryProductsMessage),
                 ),
               );
           }

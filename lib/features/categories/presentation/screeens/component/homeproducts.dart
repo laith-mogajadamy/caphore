@@ -4,6 +4,7 @@ import 'package:caphore/features/attributes/presentation/screens/components/bann
 import 'package:caphore/features/categories/presentation/controller/categories_bloc.dart';
 import 'package:caphore/features/categories/presentation/controller/categories_event.dart';
 import 'package:caphore/features/categories/presentation/controller/categories_state.dart';
+import 'package:caphore/features/categories/presentation/screeens/categoryproducts.dart';
 import 'package:caphore/features/categories/presentation/screeens/component/categories_component.dart';
 import 'package:caphore/features/categories/presentation/screeens/component/products/H_CategoryProductsComponent.dart';
 import 'package:caphore/features/categories/presentation/screeens/widgets/CategoryNameAndShowAll.dart';
@@ -78,22 +79,43 @@ class Homeproducts extends StatelessWidget {
                                     builder: (context) => const GoldenMall()),
                               );
                             } else {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => dynamicshowall(
+                              //
+                              if (state.allCategories[index].children.isEmpty) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => CategoryProducts(
                                       event: GetCategoryProductsEvent(
-                                          pageNum: 1,
-                                          categoryId:
-                                              state.allCategories[index].id,
-                                          perPage: 20,
-                                          lastProducts: const []),
+                                        categoryId:
+                                            state.allCategories[index].id,
+                                        pageNum: 1,
+                                        perPage: 20,
+                                        lastProducts: const [], // ✅ Pass current products
+                                      ),
                                       categoryName:
                                           state.allCategories[index].name,
-                                      categoryId:
-                                          state.allCategories[index].id),
-                                ),
-                              );
+                                      categoryId: state.allCategories[index].id,
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DynamicShowAll(
+                                        event: GetCategoryProductsEvent(
+                                            pageNum: 1,
+                                            categoryId:
+                                                state.allCategories[index].id,
+                                            perPage: 20,
+                                            lastProducts: const []),
+                                        categoryName:
+                                            state.allCategories[index].name,
+                                        categoryId:
+                                            state.allCategories[index].id),
+                                  ),
+                                );
+                              }
                             }
                           },
                         ),
@@ -127,7 +149,7 @@ class Homeproducts extends StatelessWidget {
             return SizedBox(
               height: 280.h,
               child: Center(
-                child: Text(state.menClothingProductsMessage),
+                child: Text(state.categoryProductsMessage),
               ),
             );
         }

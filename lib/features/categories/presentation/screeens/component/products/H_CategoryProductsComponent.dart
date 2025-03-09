@@ -81,7 +81,7 @@ class H_CategoryProductsComponent extends StatelessWidget {
               return SizedBox(
                 height: 280.h,
                 child: Center(
-                  child: Text(state.menClothingProductsMessage),
+                  child: Text(state.categoryProductsMessage),
                 ),
               );
           }

@@ -1,27 +1,34 @@
 import 'package:caphore/features/categories/domain/entities/categories.dart';
 
+// ignore: must_be_immutable
 class CategoryModel extends Category {
-  const CategoryModel(
-      {required super.id,
-      required super.name,
-        required super.parent,
-      required super.description,
-      required super.slug,
-      required super.image});
+  CategoryModel({
+    required super.id,
+    required super.name,
+    required super.parent,
+    required super.description,
+    required super.slug,
+    required super.image,
+    required super.children,
+  });
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) => CategoryModel(
-      id: json['id'] ?? 0,
-      name: json['name'] ?? '',
-      slug: json['slug'] ?? '',
-      parent: json['parent']??0,
-      description: json['description'] ?? '',
-      image: ImageModel.fromJson(json['image'] ??
-          {
-            "id": 0,
-            "date_created": "",
-            "src": "",
-            "name": "",
-          }));
+        id: json['id'] ?? 0,
+        name: json['name'] ?? '',
+        slug: json['slug'] ?? '',
+        parent: json['parent'] ?? 0,
+        description: json['description'] ?? '',
+        image: ImageModel.fromJson(
+          json['image'] ??
+              {
+                "id": 0,
+                "date_created": "",
+                "src": "",
+                "name": "",
+              },
+        ),
+        children: [],
+      );
 }
 
 class ImageModel extends Image {

@@ -32,71 +32,6 @@ class CategoriesState extends Equatable {
   final String lastProductsMessage;
 
   //
-  final List<Product> offersProducts;
-  final RequestState offersProductsState;
-  final String offersProductsMessage;
-
-  //
-  final List<Product> womenClothingProducts;
-  final RequestState womenClothingProductsState;
-  final String womenClothingProductsMessage;
-
-  //
-  final List<Product> menClothingProducts;
-  final RequestState menClothingProductsState;
-  final String menClothingProductsMessage;
-
-  //
-  final List<Product> childrenClothingProducts;
-  final RequestState childrenClothingProductsState;
-  final String childrenClothingProductsMessage;
-
-  //
-  final List<Product> foodProducts;
-  final RequestState foodProductsState;
-  final String foodProductsMessage;
-
-  //
-  final List<Product> shoesAndBagsProducts;
-  final RequestState shoesAndBagsProductsState;
-  final String shoesAndBagsProductsMessage;
-
-  //
-  final List<Product> watchesAndAccessoriesProducts;
-  final RequestState watchesAndAccessoriesProductsState;
-  final String watchesAndAccessoriesProductsMessage;
-
-  //
-  final List<Product> mobilesProducts;
-  final RequestState mobilesProductsState;
-  final String mobilesProductsMessage;
-
-  //
-  final List<Product> perfumesProducts;
-  final RequestState perfumesProductsState;
-  final String perfumesProductsMessage;
-
-  //
-  final List<Product> houseAndKitchenProducts;
-  final RequestState houseAndKitchenProductsState;
-  final String houseAndKitchenProductsMessage;
-
-  //
-  final List<Product> electronicEquipmentProducts;
-  final RequestState electronicEquipmentProductsState;
-  final String electronicEquipmentProductsMessage;
-
-  //
-  final List<Product> makeUpProducts;
-  final RequestState makeUpProductsState;
-  final String makeUpProductsMessage;
-
-  //
-  final List<Product> petsProducts;
-  final RequestState petsProductsState;
-  final String petsProductsMessage;
-
-  //
   final List<Product> categoryProducts;
   final RequestState categoryProductsState;
   final RequestState loadMore;
@@ -110,6 +45,8 @@ class CategoriesState extends Equatable {
   //
   final int currentSlider;
   final bool searchicon;
+  //
+  final bool hasChildern;
 
   // 2
   const CategoriesState({
@@ -151,58 +88,6 @@ class CategoriesState extends Equatable {
     this.lastProductsState = RequestState.loading,
     this.lastProductsMessage = '',
     //
-    this.offersProducts = const [],
-    this.offersProductsState = RequestState.loading,
-    this.offersProductsMessage = '',
-    //
-    this.womenClothingProducts = const [],
-    this.womenClothingProductsState = RequestState.loading,
-    this.womenClothingProductsMessage = '',
-    //
-    this.menClothingProducts = const [],
-    this.menClothingProductsState = RequestState.loading,
-    this.menClothingProductsMessage = '',
-    //
-    this.childrenClothingProducts = const [],
-    this.childrenClothingProductsState = RequestState.loading,
-    this.childrenClothingProductsMessage = '',
-    //
-    this.foodProducts = const [],
-    this.foodProductsState = RequestState.loading,
-    this.foodProductsMessage = '',
-    //
-    this.shoesAndBagsProducts = const [],
-    this.shoesAndBagsProductsState = RequestState.loading,
-    this.shoesAndBagsProductsMessage = '',
-    //
-    this.watchesAndAccessoriesProducts = const [],
-    this.watchesAndAccessoriesProductsState = RequestState.loading,
-    this.watchesAndAccessoriesProductsMessage = '',
-    //
-    this.mobilesProducts = const [],
-    this.mobilesProductsState = RequestState.loading,
-    this.mobilesProductsMessage = '',
-    //
-    this.perfumesProducts = const [],
-    this.perfumesProductsState = RequestState.loading,
-    this.perfumesProductsMessage = '',
-    //
-    this.houseAndKitchenProducts = const [],
-    this.houseAndKitchenProductsState = RequestState.loading,
-    this.houseAndKitchenProductsMessage = '',
-    //
-    this.electronicEquipmentProducts = const [],
-    this.electronicEquipmentProductsState = RequestState.loading,
-    this.electronicEquipmentProductsMessage = '',
-    //
-    this.makeUpProducts = const [],
-    this.makeUpProductsState = RequestState.loading,
-    this.makeUpProductsMessage = '',
-    //
-    this.petsProducts = const [],
-    this.petsProductsState = RequestState.loading,
-    this.petsProductsMessage = '',
-    //
     this.categoryProducts = const [],
     this.categoryProductsState = RequestState.loading,
     this.loadMore = RequestState.loaded,
@@ -216,6 +101,8 @@ class CategoriesState extends Equatable {
 
     this.currentSlider = 0,
     this.searchicon = false,
+    //
+    this.hasChildern = false,
   });
 
   CategoriesState copyWith({
@@ -245,58 +132,7 @@ class CategoriesState extends Equatable {
     final RequestState? lastProductsState,
     final String? lastProductsMessage,
     //
-    final List<Product>? offersProducts,
-    final RequestState? offersProductsState,
-    final String? offersProductsMessage,
-    //
-    final List<Product>? womenClothingProducts,
-    final RequestState? womenClothingProductsState,
-    final String? womenClothingProductsMessage,
-    //
-    final List<Product>? menClothingProducts,
-    final RequestState? menClothingProductsState,
-    final String? menClothingProductsMessage,
-    //
-    final List<Product>? childrenClothingProducts,
-    final RequestState? childrenClothingProductsState,
-    final String? childrenClothingProductsMessage,
-    //
-    final List<Product>? foodProducts,
-    final RequestState? foodProductsState,
-    final String? foodProductsMessage,
-    //
-    final List<Product>? shoesAndBagsProducts,
-    final RequestState? shoesAndBagsProductsState,
-    final String? shoesAndBagsProductsMessage,
-    //
-    final List<Product>? watchesAndAccessoriesProducts,
-    final RequestState? watchesAndAccessoriesProductsState,
-    final String? watchesAndAccessoriesProductsMessage,
-    //
-    final List<Product>? mobilesProducts,
-    final RequestState? mobilesProductsState,
-    final String? mobilesProductsMessage,
-    //
-    final List<Product>? perfumesProducts,
-    final RequestState? perfumesProductsState,
-    final String? perfumesProductsMessage,
-    //
-    final List<Product>? houseAndKitchenProducts,
-    final RequestState? houseAndKitchenProductsState,
-    final String? houseAndKitchenProductsMessage,
-    //
-    final List<Product>? electronicEquipmentProducts,
-    final RequestState? electronicEquipmentProductsState,
-    final String? electronicEquipmentProductsMessage,
-    //
-    final List<Product>? makeUpProducts,
-    final RequestState? makeUpProductsState,
-    final String? makeUpProductsMessage,
-    //
-    final List<Product>? petsProducts,
-    final RequestState? petsProductsState,
-    final String? petsProductsMessage,
-    //
+
     final List<Product>? categoryProducts,
     final RequestState? categoryProductsState,
     final RequestState? loadMore,
@@ -310,6 +146,8 @@ class CategoriesState extends Equatable {
     //
     final int? currentSlider,
     final bool? searchicon,
+    //
+    final bool? hasChildern,
   }) {
     return CategoriesState(
       // 4
@@ -342,83 +180,7 @@ class CategoriesState extends Equatable {
       lastProductsState: lastProductsState ?? this.lastProductsState,
       lastProductsMessage: lastProductsMessage ?? this.lastProductsMessage,
       //
-      offersProducts: offersProducts ?? this.offersProducts,
-      offersProductsState: offersProductsState ?? this.offersProductsState,
-      offersProductsMessage:
-          offersProductsMessage ?? this.offersProductsMessage,
-      //
-      womenClothingProducts:
-          womenClothingProducts ?? this.womenClothingProducts,
-      womenClothingProductsState:
-          womenClothingProductsState ?? this.womenClothingProductsState,
-      womenClothingProductsMessage:
-          womenClothingProductsMessage ?? this.womenClothingProductsMessage,
-      //
-      menClothingProducts: menClothingProducts ?? this.menClothingProducts,
-      menClothingProductsState:
-          menClothingProductsState ?? this.menClothingProductsState,
-      menClothingProductsMessage:
-          menClothingProductsMessage ?? this.menClothingProductsMessage,
-      //
-      childrenClothingProducts:
-          childrenClothingProducts ?? this.childrenClothingProducts,
-      childrenClothingProductsState:
-          childrenClothingProductsState ?? this.childrenClothingProductsState,
-      childrenClothingProductsMessage: childrenClothingProductsMessage ??
-          this.childrenClothingProductsMessage,
-      //
-      foodProducts: foodProducts ?? this.foodProducts,
-      foodProductsState: foodProductsState ?? this.foodProductsState,
-      foodProductsMessage: foodProductsMessage ?? this.foodProductsMessage,
-      //
-      shoesAndBagsProducts: shoesAndBagsProducts ?? this.shoesAndBagsProducts,
-      shoesAndBagsProductsState:
-          shoesAndBagsProductsState ?? this.shoesAndBagsProductsState,
-      shoesAndBagsProductsMessage:
-          shoesAndBagsProductsMessage ?? this.shoesAndBagsProductsMessage,
-      //
-      watchesAndAccessoriesProducts:
-          watchesAndAccessoriesProducts ?? this.watchesAndAccessoriesProducts,
-      watchesAndAccessoriesProductsState: watchesAndAccessoriesProductsState ??
-          this.watchesAndAccessoriesProductsState,
-      watchesAndAccessoriesProductsMessage:
-          watchesAndAccessoriesProductsMessage ??
-              this.watchesAndAccessoriesProductsMessage,
-      //
-      mobilesProducts: mobilesProducts ?? this.mobilesProducts,
-      mobilesProductsState: mobilesProductsState ?? this.mobilesProductsState,
-      mobilesProductsMessage:
-          mobilesProductsMessage ?? this.mobilesProductsMessage,
-      //
-      perfumesProducts: perfumesProducts ?? this.perfumesProducts,
-      perfumesProductsState:
-          perfumesProductsState ?? this.perfumesProductsState,
-      perfumesProductsMessage:
-          perfumesProductsMessage ?? this.perfumesProductsMessage,
-      //
-      houseAndKitchenProducts:
-          houseAndKitchenProducts ?? this.houseAndKitchenProducts,
-      houseAndKitchenProductsState:
-          houseAndKitchenProductsState ?? this.houseAndKitchenProductsState,
-      houseAndKitchenProductsMessage:
-          houseAndKitchenProductsMessage ?? this.houseAndKitchenProductsMessage,
-      //
-      electronicEquipmentProducts:
-          electronicEquipmentProducts ?? this.electronicEquipmentProducts,
-      electronicEquipmentProductsState: electronicEquipmentProductsState ??
-          this.electronicEquipmentProductsState,
-      electronicEquipmentProductsMessage: electronicEquipmentProductsMessage ??
-          this.electronicEquipmentProductsMessage,
-      //
-      makeUpProducts: makeUpProducts ?? this.makeUpProducts,
-      makeUpProductsState: makeUpProductsState ?? this.makeUpProductsState,
-      makeUpProductsMessage:
-          makeUpProductsMessage ?? this.makeUpProductsMessage,
-      //
-      petsProducts: petsProducts ?? this.petsProducts,
-      petsProductsState: petsProductsState ?? this.petsProductsState,
-      petsProductsMessage: petsProductsMessage ?? this.petsProductsMessage,
-      //
+
       categoryProducts: categoryProducts ?? this.categoryProducts,
       categoryProductsState:
           categoryProductsState ?? this.categoryProductsState,
@@ -435,6 +197,8 @@ class CategoriesState extends Equatable {
 
       currentSlider: currentSlider ?? this.currentSlider,
       searchicon: searchicon ?? this.searchicon,
+      //
+      hasChildern: hasChildern ?? this.hasChildern,
     );
   }
 
@@ -467,58 +231,6 @@ class CategoriesState extends Equatable {
         lastProductsMessage,
         lastProducts,
         //
-        offersProductsState,
-        offersProductsMessage,
-        offersProducts,
-        //
-        womenClothingProductsState,
-        womenClothingProductsMessage,
-        womenClothingProducts,
-        //
-        menClothingProductsState,
-        menClothingProductsMessage,
-        menClothingProducts,
-        //
-        childrenClothingProductsState,
-        childrenClothingProductsMessage,
-        childrenClothingProducts,
-        //
-        foodProductsState,
-        foodProductsMessage,
-        foodProducts,
-        //
-        shoesAndBagsProductsState,
-        shoesAndBagsProductsMessage,
-        shoesAndBagsProducts,
-        //
-        watchesAndAccessoriesProductsState,
-        watchesAndAccessoriesProductsMessage,
-        watchesAndAccessoriesProducts,
-        //
-        mobilesProductsState,
-        mobilesProductsMessage,
-        mobilesProducts,
-        //
-        perfumesProductsState,
-        perfumesProductsMessage,
-        perfumesProducts,
-        //
-        houseAndKitchenProductsState,
-        houseAndKitchenProductsMessage,
-        houseAndKitchenProducts,
-        //
-        electronicEquipmentProductsState,
-        electronicEquipmentProductsMessage,
-        electronicEquipmentProducts,
-        //
-        makeUpProductsState,
-        makeUpProductsMessage,
-        makeUpProducts,
-        //
-        petsProductsState,
-        petsProductsMessage,
-        petsProducts,
-        //
         categoryProducts,
         categoryProductsMessage,
         categoryProductsState,
@@ -533,5 +245,7 @@ class CategoriesState extends Equatable {
 
         currentSlider,
         searchicon,
+        //
+        hasChildern,
       ];
 }

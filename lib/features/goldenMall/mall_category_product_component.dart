@@ -97,14 +97,14 @@ class MallCategoryProductComponent extends StatelessWidget {
                   else
                     state.loadMore == RequestState.loading
                         ? LottieBuilder.asset('assets/lottie/loading.json')
-                        : SizedBox(),
+                        : const SizedBox(),
                 ],
               );
             case RequestState.error:
               return SizedBox(
                 height: 280.h,
                 child: Center(
-                  child: Text(state.menClothingProductsMessage),
+                  child: Text(state.categoryProductsMessage),
                 ),
               );
           }

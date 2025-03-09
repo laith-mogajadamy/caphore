@@ -8,7 +8,6 @@ import 'package:caphore/features/categories/presentation/screeens/component/prod
 import 'package:caphore/features/goldenMall/MallComponent/MallBannersComponent.dart';
 import 'package:caphore/features/categories/presentation/screeens/widgets/CategoryNameAndShowAll.dart';
 import 'package:caphore/features/goldenMall/mall_HcategoriesProductComponent.dart';
-import 'package:caphore/features/categories/presentation/screeens/dynamicshowall.dart';
 import 'package:caphore/features/goldenMall/mallshowall.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
