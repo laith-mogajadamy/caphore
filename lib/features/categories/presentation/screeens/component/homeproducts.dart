@@ -32,8 +32,9 @@ class Homeproducts extends StatelessWidget {
               alignment: Alignment.center,
               child: Center(
                 child: Lottie.asset(
-                  'assets/lottie/digishi.json',
+                  'assets/lottie/waiting.json',
                   fit: BoxFit.fill,
+                  height: size.height / 2,
                 ),
               ),
             );
