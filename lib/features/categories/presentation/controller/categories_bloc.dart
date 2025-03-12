@@ -44,44 +44,23 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
         (r) async {
           List<Category> a = [];
 
-          // Function to fetch children
-          Future<List<Category>> fetchChildren(int parentId) async {
-            print('fetchChildren');
-            final childrenResult = await getCategoriesByParentUseCase(
-                CategoriesByParentParameters(parent: parentId));
-
-            return childrenResult.fold(
-              (l) => [], // Return empty list on error
-              (r) {
-                print('childrenResult=======');
-                print(r);
-                r.sort((a, b) => a.description.compareTo(b.description));
-                return r;
-              },
-            );
-          }
-
           // Process both pages in one function
-          Future<void> processCategories(List<Category> categories) async {
+          void processCategories(List<Category> categories) {
             for (var e in categories) {
               if (e.parent == 0 && e.image.src != '') {
-                var children = await fetchChildren(e.id);
-                e = e.copyWith(children: children);
                 a.add(e);
-                print('categorie==========');
-                print(e);
               }
             }
           }
 
-          // Fetch first page categories
-          await processCategories(r);
+          // Process first page categories
+          processCategories(r);
 
-          // Fetch second page categories
+          // Process second page categories
           await result2.fold(
             (l) async {},
             (r2) async {
-              await processCategories(r2);
+              processCategories(r2);
             },
           );
 

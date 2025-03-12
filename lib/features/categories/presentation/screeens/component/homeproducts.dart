@@ -1,6 +1,9 @@
+import 'package:caphore/core/services/services_locator.dart';
 import 'package:caphore/core/utils/enums.dart';
 import 'package:caphore/features/attributes/presentation/screens/components/attributes/brands_component_horizantel.dart';
 import 'package:caphore/features/attributes/presentation/screens/components/banners_two_component.dart';
+import 'package:caphore/features/categories/domain/entities/categories.dart';
+import 'package:caphore/features/categories/domain/usecases/get_categories_by_parent_usecase.dart';
 import 'package:caphore/features/categories/presentation/controller/categories_bloc.dart';
 import 'package:caphore/features/categories/presentation/controller/categories_event.dart';
 import 'package:caphore/features/categories/presentation/controller/categories_state.dart';
@@ -21,6 +24,18 @@ class Homeproducts extends StatelessWidget {
   const Homeproducts({super.key});
   @override
   Widget build(BuildContext context) {
+    var bloc = sl<CategoriesBloc>();
+    GetCategoriesByParentUseCase t = bloc.getCategoriesByParentUseCase;
+    Future<bool> hasChildren(int parentId) async {
+      final childrenResult =
+          await t(CategoriesByParentParameters(parent: parentId));
+      print(childrenResult);
+      return childrenResult.fold(
+        (l) => false,
+        (r) => r.isNotEmpty,
+      );
+    }
+
     Size size = MediaQuery.of(context).size;
     return BlocBuilder<CategoriesBloc, CategoriesState>(
       buildWhen: (previous, current) =>
@@ -72,7 +87,7 @@ class Homeproducts extends StatelessWidget {
                               ),
                         CategoryNameAndShowAll(
                           name: state.allCategories[index].name,
-                          showAllCallBack: () {
+                          showAllCallBack: () async {
                             if (state.allCategories[index].id == 693) {
                               Navigator.push(
                                 context,
@@ -81,7 +96,9 @@ class Homeproducts extends StatelessWidget {
                               );
                             } else {
                               //
-                              if (state.allCategories[index].children.isEmpty) {
+                              bool s = await hasChildren(
+                                  state.allCategories[index].id);
+                              if (!s) {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
