@@ -34,7 +34,7 @@ class Fullproductimage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: size.height / 1.5,
+                    height: size.height / 2.5,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

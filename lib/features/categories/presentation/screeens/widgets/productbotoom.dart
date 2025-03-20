@@ -71,7 +71,7 @@ class ProductBottom extends StatelessWidget {
                     style:
                         TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
                   ),
-                  (price == "33" || price == "")
+                  (price == "33" || price == "" || price == "0")
                       ? Text(
                           " تواصل لمعرفةالسعر",
                           style: TextStyle(
@@ -97,26 +97,30 @@ class ProductBottom extends StatelessWidget {
                       width: 0,
                     )
                   : (storename == "golden-mall")
-                      ? ElevatedButton.icon(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.green,
-                              fixedSize: Size(250.w, 40.h)),
-                          onPressed: () {
-                            bloc.add(AddProductToBasket(productModel: product));
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(snackBar);
-                          },
-                          icon: Icon(
-                            Icons.shopping_cart,
-                            size: 30.h,
-                            color: AppColor.whiteColor,
-                          ),
-                          label: Text(
-                            "اضف الى السلة",
-                            style: TextStyle(
-                                fontSize: 18.sp, color: AppColor.whiteColor),
-                          ),
-                        )
+                      ? (price != '0')
+                          ? ElevatedButton.icon(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.green,
+                                  fixedSize: Size(250.w, 40.h)),
+                              onPressed: () {
+                                bloc.add(
+                                    AddProductToBasket(productModel: product));
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              },
+                              icon: Icon(
+                                Icons.shopping_cart,
+                                size: 30.h,
+                                color: AppColor.whiteColor,
+                              ),
+                              label: Text(
+                                "اضف الى السلة",
+                                style: TextStyle(
+                                    fontSize: 18.sp,
+                                    color: AppColor.whiteColor),
+                              ),
+                            )
+                          : const SizedBox.shrink()
                       : ElevatedButton.icon(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.green,

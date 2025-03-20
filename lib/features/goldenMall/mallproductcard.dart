@@ -117,7 +117,9 @@ class MallProductCard extends StatelessWidget {
                           : size.height / 19,
                       child: Column(
                         children: [
-                          (product.price == "33" || product.price == '')
+                          (product.price == "33" ||
+                                  product.price == '' ||
+                                  product.price == '0')
                               ? FittedBox(
                                   fit: BoxFit.scaleDown,
                                   child: Text(
@@ -152,21 +154,25 @@ class MallProductCard extends StatelessWidget {
                         ],
                       )),
                   // add button
-                  SizedBox(
-                    height: size.height / 30,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        bloc.add(AddProductToBasket(productModel: product));
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColor.accentColor),
-                      child: const Text(
-                        "أضف الى السلة",
-                        style: TextStyle(color: AppColor.whiteColor),
-                      ),
-                    ),
-                  ),
+                  (product.price != '0')
+                      ? SizedBox(
+                          height: size.height / 30,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              bloc.add(
+                                  AddProductToBasket(productModel: product));
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColor.accentColor),
+                            child: const Text(
+                              "أضف الى السلة",
+                              style: TextStyle(color: AppColor.whiteColor),
+                            ),
+                          ),
+                        )
+                      : const SizedBox.shrink(),
                   SizedBox(
                     height: 3.h,
                   )

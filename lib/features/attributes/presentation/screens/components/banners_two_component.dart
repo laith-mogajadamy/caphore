@@ -6,6 +6,7 @@ import 'package:caphore/features/attributes/presentation/controller/attributes_b
 import 'package:caphore/features/attributes/presentation/controller/attributes_event.dart';
 import 'package:caphore/features/attributes/presentation/controller/attributes_state.dart';
 import 'package:caphore/features/attributes/presentation/screens/storeproducts.dart';
+import 'package:caphore/features/categories/presentation/screeens/widgets/categorienavigator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -92,22 +93,27 @@ class _ImageSliderTwoWithIndexState extends State<ImageSliderTwoWithIndex> {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => StoreProducts(
-                                  attribute: attributeName[index],
-                                  termid: int.parse(termId[index]),
-                                  event: GetTermProductsEvent(
-                                      attribute: attributeName[index],
-                                      termId: int.parse(termId[index]),
-                                      perPage: 20,
-                                      pageNum: 1),
-                                  storeName: 'المطاعم',
-                                  image: images[index],
+                            if (attributeName[index] == "Categorie") {
+                              categorienavigator(int.parse(termId[index]),
+                                  attributeName[index], context);
+                            } else {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => StoreProducts(
+                                    attribute: attributeName[index],
+                                    termid: int.parse(termId[index]),
+                                    event: GetTermProductsEvent(
+                                        attribute: attributeName[index],
+                                        termId: int.parse(termId[index]),
+                                        perPage: 20,
+                                        pageNum: 1),
+                                    storeName: 'المطاعم',
+                                    image: images[index],
+                                  ),
                                 ),
-                              ),
-                            );
+                              );
+                            }
                           },
                           child: Container(
                             margin: EdgeInsets.symmetric(
