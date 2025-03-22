@@ -1,10 +1,10 @@
-import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:caphore/core/network/injection.dart';
 import 'package:caphore/core/services/services_locator.dart';
 import 'package:caphore/core/utils/prefrences.dart';
 import 'package:caphore/core/utils/routes.dart';
-import 'package:caphore/features/notification/firebase_api.dart';
 import 'package:caphore/features/welcome/presentation/Splash.dart';
+import 'package:caphore/firebase_options.dart';
+import 'package:caphore/my_notification_service.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -15,37 +15,16 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 void main() async {
-  AwesomeNotifications().initialize(
-      // set the icon to null if you want to use the default app icon
-      null,
-      [
-        NotificationChannel(
-            channelGroupKey: 'basic_channel_group',
-            channelKey: 'basic_channel',
-            channelName: 'Basic notifications',
-            channelDescription: 'Notification channel for basic tests',
-            defaultColor: const Color(0xFF9D50DD),
-            ledColor: Colors.white)
-      ],
-      // Channel groups are only visual and are not required
-      channelGroups: [
-        NotificationChannelGroup(
-            channelGroupKey: 'basic_channel_group',
-            channelGroupName: 'Basic group')
-      ],
-      debug: true);
   ServicesLocator().init();
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  NotificationService().initialize();
   await EasyLocalization.ensureInitialized();
   await Preferences.init();
   Injection.init();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-// BackgroundFetch.registerHeadlessTask(backgroundFetchCallback);
-
-  //fire base code
-  await Firebase.initializeApp();
 
   runApp(EasyLocalization(
       supportedLocales: const [Locale('ar', 'SA')],
@@ -63,16 +42,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  void initState() {
-    FirebaseApi().initNotifications();
-    AwesomeNotifications().isNotificationAllowed().then((value) {
-      if (!value) {
-        AwesomeNotifications().requestPermissionToSendNotifications();
-      }
-    });
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

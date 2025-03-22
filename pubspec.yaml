@@ -60,14 +60,11 @@ dependencies:
   connectivity_plus: ^5.0.0
   get: ^4.6.6
   internet_connection_checker: ^1.0.0+1
-  firebase_core: ^3.5.0
-  firebase_messaging: ^15.1.2
-
-#  signalr_core: ^1.1.1
-  awesome_notifications_core: any
-  awesome_notifications: ^0.10.0
+  firebase_core: ^3.12.1
+  firebase_messaging: ^15.2.4
   store_redirect: ^2.0.3
   delayed_display: ^2.0.0
+  flutter_local_notifications: ^19.0.0
 #  background_fetch: ^1.2.1
 
 
